@@ -1,0 +1,23 @@
+package com.example.examplemod;
+
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
+@Mod(modid = ExampleMod.MODID, version = ExampleMod.VERSION)
+public class ExampleMod
+{
+    public static final String MODID = "ななしのMod";
+    public static final String VERSION = "0.0.1";
+
+    @EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+    	//レシピのちゅいか
+    	GameRegistry.addRecipe(new ItemStack(Items.water_bucket),"X",'X',Blocks.dirt);
+    }
+}

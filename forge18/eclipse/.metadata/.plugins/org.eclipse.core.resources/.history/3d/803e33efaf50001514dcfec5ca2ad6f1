@@ -1,0 +1,17 @@
+package com.example.examplemod;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item;
+
+public class NaturalItems extends Item {
+    public NaturalItems(String img,int id,String UN){
+        //IDの設定
+        super(id);
+        //テクスチャーの設定
+        setTextureName("hard:"+img);
+        //内部の名前
+        setUnlocalizedName(UN);
+        //クリエイティブタブの設定
+        setCreativeTab(CreativeTabs.tabMaterials);
+    }
+}

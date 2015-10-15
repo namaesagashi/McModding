@@ -1,0 +1,10 @@
+package DirtMod;
+
+import net.minecraftforge.fml.common.Mod;
+
+@Mod(modid="DIrtMod",name="DirtMod",version="1.0")
+
+
+public class DirtMod {
+
+}

@@ -1,0 +1,51 @@
+package samplemod;
+
+import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
+@Mod(modid = "unko", name = "SampleMod", version = "1.0", dependencies = "required-after:Forge@[1.8-11.14.0.1239,)", useMetadata = true)
+public class samplemod {
+    public static final String MOD_ID = "samplemod";
+
+    @Mod.Instance("unko")
+
+    public static samplemod INSTANCE;
+
+    public static Item sampleItem;
+
+    @EventHandler
+
+    public void preInit(FMLPreInitializationEvent event) {
+        sampleItem = new Item()
+                .setCreativeTab(CreativeTabs.tabMaterials)/*クリエイティブのタブ*/
+                .setUnlocalizedName("unko")/*システム名の登録*/
+		/*.setHasSubtypes(true)*//*ダメージ値等で複数の種類のアイテムを分けているかどうか。デフォルトfalse*/
+		/*.setMaxDamage(256)*//*耐久値の設定。デフォルト0*/
+		/*.setFull3D()*//*３D表示で描画させる。ツールや骨、棒等。*/
+		/*.setContainerItem(Items.stick)*//*クラフト時にアイテムを返却できるようにしている際の返却アイテムの指定。*/
+		/*.setPotionEffect(PotionHelper.ghastTearEffect)*//*指定文字列に対応した素材として醸造台で使える。PotionHelper参照のこと。*/
+		/*.setNoRepair()*//*修理レシピを削除し、金床での修繕を出来なくする*/
+                .setMaxStackSize(32);/*スタックできる量。デフォルト64*/
+        //アイテムの登録。登録文字列はMOD内で被らなければ何でも良い。
+        GameRegistry.registerItem(sampleItem, "unko");
+
+        //テクスチャ・モデル指定JSONファイル名の登録。
+        if (event.getSide().isClient()) {
+            //1IDで複数モデルを登録するなら、上のメソッドで登録した登録名を指定する。
+            ModelLoader.setCustomModelResourceLocation(sampleItem, 0, new ModelResourceLocation(MOD_ID + ":" + "unko", "inventory"));
+        }
+
+    }
+
+    @EventHandler
+    public void init(FMLInitializationEvent event) {
+
+    }
+}
